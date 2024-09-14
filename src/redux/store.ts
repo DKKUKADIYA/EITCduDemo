@@ -24,8 +24,10 @@ const rootReducer = combineReducers({
   language: languageReducer,
 });
 
+//for persist reducers
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+//Here we use default middleware
 const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
@@ -39,6 +41,7 @@ const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
+//For persist store
 export const persistor = persistStore(store);
 
 export default store;

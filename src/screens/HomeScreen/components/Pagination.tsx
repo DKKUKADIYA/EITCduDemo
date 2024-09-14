@@ -14,7 +14,7 @@ const Pagination: React.FC<PaginationProps> = ({ onPreviousPageChange, onNextPag
     const [page, setPage] = useState<number>(1);
     const totalPages = 5;
 
-    // Use useCallback to memoize handlers and avoid unnecessary re-renders
+    // Here use "useCallback" to memoize handlers and avoid unnecessary re-renders
     const handlePreviousPage = useCallback(() => {
         setPage(prevPage => {
             const newPage = Math.max(prevPage - 1, 1);
@@ -25,6 +25,7 @@ const Pagination: React.FC<PaginationProps> = ({ onPreviousPageChange, onNextPag
         });
     }, [onPreviousPageChange]);
 
+    // Here use "useCallback" to memoize handlers and avoid unnecessary re-renders
     const handleNextPage = useCallback(() => {
         setPage(prevPage => {
             const newPage = Math.min(prevPage + 1, totalPages);

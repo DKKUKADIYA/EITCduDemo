@@ -13,7 +13,7 @@ interface ApiResponse {
     results: Movie[];
 }
 
-// Fetch popular movies List
+// Fetch popular movies List using "axios".
 export const fetchPopularMovies = async (selectedLanguage: string, page: number): Promise<Movie[]> => {
     try {
         const response = await axios.get<ApiResponse>(MOVIE_DB_BASE_URL, {
@@ -26,7 +26,7 @@ export const fetchPopularMovies = async (selectedLanguage: string, page: number)
                 'Authorization': authToken,
                 'Accept': 'application/json',
             },
-            timeout: 10000,
+            timeout: 10000, // Add timeout it is optional
         });
         if (response.status === 200) {
             return response?.data?.results || [];

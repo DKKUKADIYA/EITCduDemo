@@ -46,6 +46,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     const dispatch = useDispatch();
     const { selectedLanguage } = useSelector((state: RootState) => state.language);
 
+    //To fetch Popular Movies list from DB
     const fetchMovies = useCallback(async () => {
         setLoading(true);
         try {
@@ -62,6 +63,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         fetchMovies();
     }, [fetchMovies]);
 
+    //To display "No Record Found" if list is empty or API fail.
     const renderEmptyComponent = () => (
         <View style={styles.indicatorContainer}>
             <Text style={styles.noRecordFoundText}>{t('home.noRecordFound')}</Text>

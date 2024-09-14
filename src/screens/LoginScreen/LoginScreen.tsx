@@ -19,7 +19,7 @@ import { LANGUAGE_KEYS, LanguageCodes, Languages } from '../../utils/constants';
 import { RootState } from '../../redux/store';
 import FastImage from 'react-native-fast-image';
 import { validateEmail, validatePassword } from '../../utils/validations';
-import { ROUTE_SPLASH } from '../../navigation/routes';
+import { ROUTE_HOME, ROUTE_SPLASH } from '../../navigation/routes';
 import { images } from '../../assets/images';
 import { Colors } from '../../utils/colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -37,21 +37,22 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
     const { t, i18n } = useTranslation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [submitDisabled, setSubmitDisabled] = useState(true);
+    const [loginBtnDisabled, setLoginBtnDisabled] = useState(true);
     const { selectedLanguage } = useSelector((state: RootState) => state.language);
     const [selectedValue, setSelectedValue] = useState<string>(selectedLanguage);
     const dispatch = useDispatch();
 
     // Enable/Disable submit button based on validation
     useEffect(() => {
-        setSubmitDisabled(!validateEmail(email) || !validatePassword(password) || !email || !password);
+        setLoginBtnDisabled(!validateEmail(email) || !validatePassword(password) || !email || !password);
     }, [email, password]);
 
     // Handle form submission
-    const handleSubmit = useCallback(() => {
+    const onLoginBtnClick = useCallback(() => {
         dispatch(setCredentials({ email, password }));
-        navigation.replace('HomeScreen');
-    }, [dispatch, email, password, navigation]);
+        navigation.replace(ROUTE_HOME);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [email, password]);
 
     // Handle language change and navigation
     const handleLanguageChange = useCallback(async (lang: string) => {
@@ -59,15 +60,20 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
         i18n.changeLanguage(lang);
         dispatch(changeLanguage(lang));
         await AsyncStorage.setItem(LANGUAGE_KEYS, lang);
+
         // Apply RTL or LTR based on the selected language
         const isRTL = lang === LanguageCodes.ARABIC;
         I18nManager.forceRTL(isRTL);
         I18nManager.allowRTL(isRTL);
+
         navigation.reset({
             index: 0,
             routes: [{ name: ROUTE_SPLASH }],
         });
+
+        //After change language app restart for rtl to ltr and ltr to rtl convert
         Restart.Restart();
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [i18n, navigation]);
 
@@ -114,9 +120,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                 {!validatePassword(password) ? <Text style={styles.errorText}>{t('login.passwordInvalid')}</Text> : null}
 
                 <TouchableOpacity
-                    disabled={submitDisabled}
-                    style={submitDisabled ? styles.submitBtnDisabled : styles.submitBtn}
-                    onPress={handleSubmit}
+                    disabled={loginBtnDisabled}
+                    style={loginBtnDisabled ? styles.submitBtnDisabled : styles.submitBtn}
+                    onPress={onLoginBtnClick}
                 >
                     <Text style={styles.submitText}>{t('login.login')}</Text>
                 </TouchableOpacity>

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
     },
     errorText: {
-        color: 'red',
+        color: Colors.red,
         marginBottom: 10,
     },
     dropdown: {

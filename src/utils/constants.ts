@@ -9,7 +9,6 @@ export const LanguageCodes = {
 };
 
 export const LANGUAGE_KEYS = 'LANGUAGE_KEYS';
-export const ISRTL_KEY = 'ISRTL_KEY';
 
 // Base URLs
 export const MOVIE_DB_BASE_URL = 'https://api.themoviedb.org/3/movie/popular';
