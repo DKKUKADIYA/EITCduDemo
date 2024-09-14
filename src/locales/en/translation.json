@@ -1,0 +1,20 @@
+{
+    "login": {
+        "email": "Enter Email",
+        "password": "Enter Password",
+        "login": "Login",
+        "language": "Select Language",
+        "emailInvalid": "Please enter a valid email address.",
+        "passwordInvalid": "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, and one digit.",
+        "english": "ENG",
+        "arabic": "عربي"
+    },
+    "home": {
+        "title": "Movies List",
+        "noRecordFound": "No Record Found",
+        "logout": "Logout",
+        "logout_msg": "Are you sure you want to logout?",
+        "yes": "Yes",
+        "cancel": "Cancel"
+    }
+}
