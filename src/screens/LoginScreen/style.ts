@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     },
     errorText: {
         color: Colors.red,
-        marginBottom:  moderateScale(5),
+        marginBottom:  moderateScale(10),
         marginHorizontal:  moderateScale(2),
     },
     dropdown: {
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         backgroundColor: Colors.white,
         elevation: 4,
+        marginHorizontal: moderateScale(1),
     },
     dropdownText: {
         fontSize: 16,
