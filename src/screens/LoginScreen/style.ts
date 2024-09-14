@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     errorText: {
         color: 'red',
         marginBottom: 10,
-        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     dropdown: {
         height: 50,
