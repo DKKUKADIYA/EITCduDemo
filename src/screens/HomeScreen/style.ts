@@ -1,5 +1,6 @@
 import { I18nManager, StyleSheet } from 'react-native';
 import { Colors } from '../../utils/colors';
+import { moderateScale } from 'react-native-size-matters';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -7,18 +8,18 @@ const styles = StyleSheet.create({
     },
     subContainer: {
         flex: 1,
-        padding: 20,
+        padding: moderateScale(20),
     },
     movieItem: {
         flex: 1,
-        margin: 10,
+        margin: moderateScale(10),
         alignItems: 'center',
         borderWidth: 2,
         borderColor: Colors.primary,
-        elevation: 3,
+        elevation: 4,
         backgroundColor: Colors.white,
         borderRadius: 10,
-        paddingBottom: 5,
+        paddingBottom: moderateScale(5),
     },
     poster: {
         width: 150,
@@ -29,15 +30,19 @@ const styles = StyleSheet.create({
         borderBottomColor: Colors.primary,
     },
     title: {
-        marginTop: 5,
+        marginTop: moderateScale(5),
         fontSize: 16,
         textAlign: 'center',
         color: Colors.primary,
         fontWeight: 'bold',
         flex: 1,
-        padding: 5,
+        padding: moderateScale(5),
     },
     indicatorContainer: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    emptyContainer: {
         flex: 1,
         justifyContent: 'center',
     },
@@ -45,12 +50,12 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         color: Colors.primary,
-        marginTop: 10,
+        marginTop: moderateScale(10),
     },
     toolbar: {
         flexDirection: 'row',
         backgroundColor: Colors.primary,
-        padding: 15,
+        padding: moderateScale(15),
         justifyContent: 'space-between',
     },
     toolbarTitle: {
@@ -60,8 +65,8 @@ const styles = StyleSheet.create({
     paginationContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
+        paddingVertical: moderateScale(10),
+        paddingHorizontal: moderateScale(20),
         position: 'absolute',
         bottom: 0,
         left: 0,
@@ -76,16 +81,16 @@ const styles = StyleSheet.create({
     },
     paginationBtn: {
         backgroundColor: Colors.primary,
-        padding: 10,
+        padding: moderateScale(10),
         alignItems: 'center',
-        elevation: 3,
+        elevation: 4,
         minWidth: 50,
     },
     paginationBtnDisabled: {
         backgroundColor: Colors.disable,
-        padding: 10,
+        padding: moderateScale(10),
         alignItems: 'center',
-        elevation: 3,
+        elevation: 4,
         minWidth: 50,
     },
     paginationText: {
@@ -93,7 +98,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     listContainer: {
-        marginBottom: 50,
+        marginBottom: moderateScale(50),
     },
     logout: {
         width: 25,

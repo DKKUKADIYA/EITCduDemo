@@ -8,6 +8,7 @@ import {
     StatusBar,
     Alert,
     TouchableOpacity,
+    RefreshControl,
 } from 'react-native';
 import { fetchPopularMovies } from './tmdb';
 import styles from './style';
@@ -40,6 +41,7 @@ interface HomeScreenProps {
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [refreshing, setRefreshing] = useState(false);
     const [page, setPage] = useState<number>(1);
     const totalPages = 5;
     const { t } = useTranslation();
@@ -56,6 +58,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
             setMovies([]);
         } finally {
             setLoading(false);
+            setRefreshing(false);
         }
     }, [page, selectedLanguage]);
 
@@ -65,7 +68,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
     //To display "No Record Found" if list is empty or API fail.
     const renderEmptyComponent = () => (
-        <View style={styles.indicatorContainer}>
+        <View style={styles.emptyContainer}>
             <Text style={styles.noRecordFoundText}>{t('home.noRecordFound')}</Text>
         </View>
     );
@@ -100,6 +103,11 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         return <MovieItem item={item} />;
     };
 
+    const onRefresh = useCallback(() => {
+        setRefreshing(true);
+        fetchMovies();
+    }, [fetchMovies]);
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.toolbar}>
@@ -116,7 +124,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
             <View style={styles.subContainer}>
                 {loading ? (
                     <View style={styles.indicatorContainer}>
-                        <ActivityIndicator size={'large'} />
+                        <ActivityIndicator size={'large'} color={Colors.primary} />
                     </View>
                 ) : (
                     <FlatList
@@ -127,6 +135,13 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
                         keyExtractor={(item) => item?.id?.toString()}
                         numColumns={2}
                         ListEmptyComponent={() => renderEmptyComponent()}
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={refreshing}
+                                onRefresh={onRefresh}
+                                colors={[Colors.primary]}
+                            />
+                        }
                     />
                 )}
                 <Pagination

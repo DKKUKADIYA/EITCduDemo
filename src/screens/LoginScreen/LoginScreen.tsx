@@ -56,6 +56,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
     // Handle language change and navigation
     const handleLanguageChange = useCallback(async (lang: string) => {
+        if (lang === selectedLanguage) {
+            return;
+        }
         setSelectedValue(lang);
         i18n.changeLanguage(lang);
         dispatch(changeLanguage(lang));
@@ -105,6 +108,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                     onChangeText={(val) => {
                         setEmail(val);
                     }}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
                 />
                 {!validateEmail(email) ? <Text style={styles.errorText}>{t('login.emailInvalid')}</Text> : null}
 
@@ -116,6 +121,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                         setPassword(val);
                     }}
                     secureTextEntry
+                    maxLength={15}
                 />
                 {!validatePassword(password) ? <Text style={styles.errorText}>{t('login.passwordInvalid')}</Text> : null}
 

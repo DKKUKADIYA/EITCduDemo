@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { API_KEY, authToken, MOVIE_DB_BASE_URL } from '../../utils/constants';
+import { Alert } from 'react-native';
+import { t } from 'i18next';
 
 // Define the movie data type returned by the TMDb API
 interface Movie {
@@ -42,7 +44,8 @@ export const fetchPopularMovies = async (selectedLanguage: string, page: number)
 // Handle API errors
 const handleApiError = (error: unknown) => {
     if (axios.isAxiosError(error)) {
-        console.log('Axios Error:', error.message);
+        console.log('Axios Error:', error?.message);
+        Alert.alert(t('home.networkTitle'), t('home.networkErrorMsg'));
     } else {
         console.log('Unknown Error:', error);
     }

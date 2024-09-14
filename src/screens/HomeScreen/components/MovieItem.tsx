@@ -21,7 +21,7 @@ const MovieItem: React.FC<MovieItemProps> = ({ item }) => {
             <FastImage
                 source={{ uri: `${POSTER_BASE_URL}${poster_path}` }}
                 style={styles.poster}
-                resizeMode={FastImage.resizeMode.cover}
+                resizeMode={FastImage.resizeMode.stretch}
             />
             <Text numberOfLines={2} style={styles.title}>{title}</Text>
         </View>
