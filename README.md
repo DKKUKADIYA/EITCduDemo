@@ -22,9 +22,9 @@ https://developers.themoviedb.org/3/movies/get-popular-movies
 
 ### English Language
 
-![image1](https://github.com/user-attachments/assets/03e155c4-fe98-4714-8aef-02025c12ea0e)
-![image2](https://github.com/user-attachments/assets/c0dbbd78-6ee6-49f0-bc4c-4b05c7f3caa7)
-![image3](https://github.com/user-attachments/assets/60a6b625-ac2f-47a4-9473-6ad04b4f4baf)
+![image1](https://github.com/user-attachments/assets/b1277bd6-7429-4377-8711-3a4eaebe801f)
+![image2](https://github.com/user-attachments/assets/6a59aaca-f141-4ad8-ac5a-4dbf90a386b3)
+![image3](https://github.com/user-attachments/assets/26414303-8e60-4266-9b64-ae8379cae5c0)
 ![image4](https://github.com/user-attachments/assets/172c2952-d1ce-4fa7-9522-7f5e339d127c)
 ![image5](https://github.com/user-attachments/assets/dd0855e1-1a3a-4248-aa80-ce93c62dae01)
 
@@ -32,8 +32,8 @@ https://developers.themoviedb.org/3/movies/get-popular-movies
 ### Arabic Language
 
 
-![image6](https://github.com/user-attachments/assets/313f6a92-5bb4-4ba3-b78a-ae1a3eda23f0)
-![image7](https://github.com/user-attachments/assets/2ad16855-cea1-4902-9563-edf009e43272)
+![image6](https://github.com/user-attachments/assets/ac01bf8b-5414-4df8-9ef7-906501e462f4)
+![image7](https://github.com/user-attachments/assets/3b82b0d8-c90d-4fd6-9e00-2681f709a57c)
 ![image8](https://github.com/user-attachments/assets/328dec9c-5362-4b2f-ba8e-8a78068e3f3e)
 ![image9](https://github.com/user-attachments/assets/f3847db9-fadf-41e1-bfff-47b4adf6f955)
 
