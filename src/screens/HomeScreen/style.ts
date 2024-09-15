@@ -93,10 +93,6 @@ const styles = StyleSheet.create({
         elevation: 4,
         minWidth: 50,
     },
-    paginationText: {
-        color: Colors.white,
-        fontWeight: 'bold',
-    },
     listContainer: {
         marginBottom: moderateScale(50),
     },

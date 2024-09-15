@@ -94,6 +94,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                         selectedTextStyle={styles.dropdownText}
                         containerStyle={styles.dropdownContainerStyle}
                         itemContainerStyle={styles.dropdownItemContainer}
+                        iconStyle={styles.dropdownIconStyle}
+                        itemTextStyle={styles.dropdownItemTextStyle}
                         data={Languages}
                         labelField="label"
                         valueField="value"
@@ -103,6 +105,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                 </View>
                 <TextInput
                     style={styles.input}
+                    placeholderTextColor={Colors.black}
                     placeholder={t('login.email')}
                     value={email}
                     onChangeText={(val) => {
@@ -116,6 +119,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                 <TextInput
                     style={styles.input}
                     placeholder={t('login.password')}
+                    placeholderTextColor={Colors.black}
                     value={password}
                     onChangeText={(val) => {
                         setPassword(val);

@@ -4,7 +4,7 @@ import { moderateScale } from 'react-native-size-matters';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding:  moderateScale(25),
+        padding: moderateScale(25),
         justifyContent: 'center',
         backgroundColor: Colors.backgroundColor,
     },
@@ -15,27 +15,29 @@ const styles = StyleSheet.create({
     input: {
         borderColor: Colors.primary,
         borderWidth: 1,
-        marginBottom:  moderateScale(15),
-        padding:  moderateScale(10),
+        marginBottom: moderateScale(15),
+        padding: moderateScale(10),
         backgroundColor: Colors.white,
         elevation: 4,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
         writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
-        marginHorizontal:  moderateScale(2),
+        marginHorizontal: moderateScale(2),
+        color: Colors.black,
     },
     errorText: {
         color: Colors.red,
-        marginBottom:  moderateScale(10),
-        marginHorizontal:  moderateScale(2),
+        marginBottom: moderateScale(10),
+        marginHorizontal: moderateScale(2),
     },
     dropdown: {
         height: 45,
         borderColor: Colors.primary,
         borderWidth: 1,
-        paddingHorizontal:  moderateScale(8),
+        paddingHorizontal: moderateScale(8),
         backgroundColor: Colors.white,
         elevation: 4,
-        marginHorizontal:  moderateScale(2),
+        marginHorizontal: moderateScale(2),
+        color: Colors.black,
     },
     dropdownContainer: {
         position: 'absolute',
@@ -52,21 +54,28 @@ const styles = StyleSheet.create({
     },
     dropdownText: {
         fontSize: 16,
+        color: Colors.black,
     },
     dropdownItemContainer: {
         borderBottomColor: Colors.primary,
         borderBottomWidth: 1,
     },
+    dropdownIconStyle: {
+        tintColor: Colors.primary,
+    },
+    dropdownItemTextStyle: {
+        color: Colors.black,
+    },
     submitBtn: {
         backgroundColor: Colors.primary,
-        padding:  moderateScale(15),
+        padding: moderateScale(15),
         alignItems: 'center',
         elevation: 4,
-        marginHorizontal:  moderateScale(2),
+        marginHorizontal: moderateScale(2),
     },
     submitBtnDisabled: {
         backgroundColor: Colors.disable,
-        padding:  moderateScale(15),
+        padding: moderateScale(15),
         alignItems: 'center',
         elevation: 4,
         marginHorizontal: moderateScale(2),

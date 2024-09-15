@@ -44,7 +44,6 @@ export const fetchPopularMovies = async (selectedLanguage: string, page: number)
 // Handle API errors
 const handleApiError = (error: unknown) => {
     if (axios.isAxiosError(error)) {
-        console.log('Axios Error:', error?.message);
         Alert.alert(t('home.networkTitle'), t('home.networkErrorMsg'));
     } else {
         console.log('Unknown Error:', error);
