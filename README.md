@@ -22,20 +22,21 @@ https://developers.themoviedb.org/3/movies/get-popular-movies
 
 ### English Language
 
-![image1](https://github.com/user-attachments/assets/b1277bd6-7429-4377-8711-3a4eaebe801f)
-![image2](https://github.com/user-attachments/assets/6a59aaca-f141-4ad8-ac5a-4dbf90a386b3)
-![image3](https://github.com/user-attachments/assets/26414303-8e60-4266-9b64-ae8379cae5c0)
-![image4](https://github.com/user-attachments/assets/172c2952-d1ce-4fa7-9522-7f5e339d127c)
-![image5](https://github.com/user-attachments/assets/dd0855e1-1a3a-4248-aa80-ce93c62dae01)
+
+![image1](https://github.com/user-attachments/assets/f068ca84-6f18-41ff-9132-64a4db1e2fc3)
+![image2](https://github.com/user-attachments/assets/4a1fcd2f-f20f-4102-ad1b-1f9a4aa49e66)
+![image3](https://github.com/user-attachments/assets/193e99e1-1567-4d96-8f5e-a1c5308e5057)
+![image4](https://github.com/user-attachments/assets/7ca318e9-a61b-44bd-b0bc-f93ccad76e0c)
+![image5](https://github.com/user-attachments/assets/0510eb2a-0799-4701-b87c-20aecdfba3d8)
 
 
 ### Arabic Language
 
 
-![image6](https://github.com/user-attachments/assets/ac01bf8b-5414-4df8-9ef7-906501e462f4)
-![image7](https://github.com/user-attachments/assets/3b82b0d8-c90d-4fd6-9e00-2681f709a57c)
-![image8](https://github.com/user-attachments/assets/328dec9c-5362-4b2f-ba8e-8a78068e3f3e)
-![image9](https://github.com/user-attachments/assets/f3847db9-fadf-41e1-bfff-47b4adf6f955)
+![image6](https://github.com/user-attachments/assets/82c30e18-fa22-4a12-b128-f3791d225aa7)
+![image7](https://github.com/user-attachments/assets/1c3d5f8e-0015-486a-b48c-7259f639820f)
+![image8](https://github.com/user-attachments/assets/90525538-1356-4376-8f6e-bc21fcccfffc)
+![image9](https://github.com/user-attachments/assets/b79d769c-f213-440d-b4dc-0485a034292b)
 
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
