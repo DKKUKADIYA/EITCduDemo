@@ -4,20 +4,19 @@ import styles from '../style';
 import FastImage from 'react-native-fast-image';
 import { images } from '../../../assets/images';
 import { Colors } from '../../../utils/colors';
+import { TOTAL_PAGE } from '../../../utils/constants';
 
-interface PaginationProps {
+type PaginationProps = {
     onPreviousPageChange: () => void;
     onNextPageChange: () => void;
 }
 
 const Pagination: React.FC<PaginationProps> = ({ onPreviousPageChange, onNextPageChange }) => {
     const [page, setPage] = useState<number>(1);
-    const totalPages = 5;
 
-    // Here use "useCallback" to memoize handlers and avoid unnecessary re-renders
     const handlePreviousPage = useCallback(() => {
         setPage(prevPage => {
-            const newPage = Math.max(prevPage - 1, 1);
+            const newPage = prevPage - 1;
             if (newPage !== prevPage) {
                 onPreviousPageChange();
             }
@@ -25,10 +24,9 @@ const Pagination: React.FC<PaginationProps> = ({ onPreviousPageChange, onNextPag
         });
     }, [onPreviousPageChange]);
 
-    // Here use "useCallback" to memoize handlers and avoid unnecessary re-renders
     const handleNextPage = useCallback(() => {
         setPage(prevPage => {
-            const newPage = Math.min(prevPage + 1, totalPages);
+            const newPage = prevPage + 1;
             if (newPage !== prevPage) {
                 onNextPageChange();
             }
@@ -50,8 +48,8 @@ const Pagination: React.FC<PaginationProps> = ({ onPreviousPageChange, onNextPag
             </TouchableOpacity>
             <Text style={styles.pageNumber}>{page}</Text>
             <TouchableOpacity
-                disabled={page === totalPages}
-                style={page === totalPages ? styles.paginationBtnDisabled : styles.paginationBtn}
+                disabled={page === TOTAL_PAGE}
+                style={page === TOTAL_PAGE ? styles.paginationBtnDisabled : styles.paginationBtn}
                 onPress={handleNextPage}>
                 <FastImage
                     source={images.arrow}

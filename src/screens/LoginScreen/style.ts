@@ -1,6 +1,6 @@
 import { I18nManager, StyleSheet } from 'react-native';
 import { Colors } from '../../utils/colors';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -85,8 +85,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     poster: {
-        width: 120,
-        height: 120,
+        width: scale(110),
+        height: verticalScale(110),
         backgroundColor: Colors.backgroundColor,
         alignSelf: 'center',
         marginTop: moderateScale(50),

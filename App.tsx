@@ -6,24 +6,23 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import store, { persistor } from './src/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { I18nManager } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18n from './src/i18n';
 import { LANGUAGE_KEYS, LanguageCodes } from './src/utils/constants';
 import Restart from 'react-native-restart';
+import SensitiveStorage from './src/utils/SensitiveStorage';
 
 const App = () => {
 
   useEffect(() => {
     const initializeAppSettings = async () => {
       try {
-        const savedLanguage = await AsyncStorage.getItem(LANGUAGE_KEYS);
+        const savedLanguage = await SensitiveStorage.getItem(LANGUAGE_KEYS);
         const isRTL = savedLanguage === LanguageCodes.ARABIC;
         if (savedLanguage) {
           i18n.changeLanguage(savedLanguage);
           I18nManager.forceRTL(isRTL);
           I18nManager.allowRTL(isRTL);
         }
-        // Check if RTL/LTR needs app restart to apply properly
         if (I18nManager.isRTL !== isRTL) {
           Restart.Restart();
         }

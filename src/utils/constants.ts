@@ -8,9 +8,10 @@ export const LanguageCodes = {
     ARABIC: 'ar',
 };
 
+export const TOTAL_PAGE = 5;
+
 export const LANGUAGE_KEYS = 'LANGUAGE_KEYS';
 
-// Base URLs
 export const MOVIE_DB_BASE_URL = 'https://api.themoviedb.org/3/movie/popular';
 export const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/original';
 

@@ -1,6 +1,6 @@
 import { I18nManager, StyleSheet } from 'react-native';
 import { Colors } from '../../utils/colors';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale, verticalScale, scale } from 'react-native-size-matters';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     },
     poster: {
         width: '100%',
-        height: 190,
+        height: verticalScale(170),
         borderTopLeftRadius: 8,
         borderTopRightRadius: 8,
         borderBottomWidth: 2,
@@ -84,30 +84,30 @@ const styles = StyleSheet.create({
         padding: moderateScale(10),
         alignItems: 'center',
         elevation: 4,
-        minWidth: 50,
+        minWidth: scale(45),
     },
     paginationBtnDisabled: {
         backgroundColor: Colors.disable,
         padding: moderateScale(10),
         alignItems: 'center',
         elevation: 4,
-        minWidth: 50,
+        minWidth: scale(45),
     },
     listContainer: {
         marginBottom: moderateScale(50),
     },
     logout: {
-        width: 25,
-        height: 25,
+        width: scale(23),
+        height: verticalScale(23),
     },
     leftArrow: {
-        width: 25,
-        height: 25,
+        width: scale(23),
+        height: verticalScale(23),
         transform: [{ rotate: I18nManager.isRTL ? '180deg' : '0deg' }],
     },
     rightArrow: {
-        width: 25,
-        height: 25,
+        width: scale(23),
+        height: verticalScale(23),
         transform: [{ rotate: I18nManager.isRTL ? '0deg' : '180deg' }],
     },
 });

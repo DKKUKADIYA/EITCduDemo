@@ -4,13 +4,13 @@ import styles from '../style';
 import { POSTER_BASE_URL } from '../../../utils/constants';
 import FastImage from 'react-native-fast-image';
 
-interface Movie {
+type Movie = {
     id: number;
     title: string;
     poster_path: string;
 }
 
-interface MovieItemProps {
+type MovieItemProps = {
     item: Movie;
 }
 

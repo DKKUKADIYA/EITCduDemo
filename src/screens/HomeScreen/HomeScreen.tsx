@@ -10,28 +10,27 @@ import {
     TouchableOpacity,
     RefreshControl,
 } from 'react-native';
-import { fetchPopularMovies } from './tmdb';
 import styles from './style';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearCredentials } from '../../redux/loginSlice';
+import { clearCredentials } from '../../redux/reducers/loginSlice';
 import { persistor, RootState } from '../../redux/store';
 import { CommonActions } from '@react-navigation/native';
-import { ROUTE_SPLASH } from '../../navigation/routes';
+import { ROUTE_DESTINATION } from '../../navigation/routes';
 import Pagination from './components/Pagination';
 import MovieItem from './components/MovieItem';
 import FastImage from 'react-native-fast-image';
 import { images } from '../../assets/images';
 import { Colors } from '../../utils/colors';
+import { fetchPopularMovies } from '../../network/fetchHelper';
 
-interface Movie {
+type Movie = {
     id: number;
     title: string;
     poster_path: string;
 }
 
-// Define the props for the component
-interface HomeScreenProps {
+type HomeScreenProps = {
     navigation: {
         [x: string]: any;
         replace: (screen: string) => void;
@@ -43,12 +42,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [refreshing, setRefreshing] = useState(false);
     const [page, setPage] = useState<number>(1);
-    const totalPages = 5;
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const { selectedLanguage } = useSelector((state: RootState) => state.language);
 
-    //To fetch Popular Movies list from DB
     const fetchMovies = useCallback(async () => {
         setLoading(true);
         try {
@@ -66,14 +63,12 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         fetchMovies();
     }, [fetchMovies]);
 
-    //To display "No Record Found" if list is empty or API fail.
     const renderEmptyComponent = () => (
         <View style={styles.emptyContainer}>
             <Text style={styles.noRecordFoundText}>{t('home.noRecordFound')}</Text>
         </View>
     );
 
-    //To handle Logout
     const handleLogout = () => {
         Alert.alert(t('home.logout'), t('home.logout_msg'), [
             {
@@ -82,15 +77,12 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
             {
                 text: t('home.yes'),
                 onPress: () => {
-                    // Clear Redux state
                     dispatch(clearCredentials());
-                    // Purge persisted state
                     persistor.purge().then(() => {
-                        // Reset the navigation stack
                         navigation.dispatch(
                             CommonActions.reset({
                                 index: 0,
-                                routes: [{ name: ROUTE_SPLASH }],
+                                routes: [{ name: ROUTE_DESTINATION }],
                             })
                         );
                     });
@@ -99,9 +91,9 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         ]);
     };
 
-    const renderItem = ({ item }: { item: Movie }) => {
+    const renderItem = useCallback(({ item }: { item: Movie }) => {
         return <MovieItem item={item} />;
-    };
+    }, []);
 
     const onRefresh = useCallback(() => {
         setRefreshing(true);
@@ -145,8 +137,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
                     />
                 )}
                 <Pagination
-                    onPreviousPageChange={() => setPage((prevPage) => Math.max(prevPage - 1, 1))}
-                    onNextPageChange={() => setPage((prevPage) => Math.min(prevPage + 1, totalPages))}
+                    onPreviousPageChange={() => setPage((prevPage) => prevPage - 1)}
+                    onNextPageChange={() => setPage((prevPage) => prevPage + 1)}
                 />
             </View>
         </SafeAreaView>

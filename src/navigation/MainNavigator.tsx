@@ -4,11 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { I18nextProvider } from 'react-i18next';
 import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import SplashScreen from '../screens/SplashScreen/SplashScreen';
+import DestinationScreen from '../screens/DestinationScreen/DestinationScreen';
 import i18n from '../i18n';
-import { ROUTE_HOME, ROUTE_LOGIN, ROUTE_SPLASH } from './routes';
+import { ROUTE_HOME, ROUTE_LOGIN, ROUTE_DESTINATION } from './routes';
 
-//To create Stack
 const Stack = createStackNavigator();
 
 const screenOptions = { headerShown: false };
@@ -19,10 +18,10 @@ const MainNavigator = () => {
             <NavigationContainer>
                 <Stack.Navigator
                     screenOptions={screenOptions}
-                    initialRouteName={ROUTE_SPLASH}>
+                    initialRouteName={ROUTE_DESTINATION}>
                     <Stack.Screen
-                        name={ROUTE_SPLASH}
-                        component={SplashScreen}
+                        name={ROUTE_DESTINATION}
+                        component={DestinationScreen}
                         options={{ gestureEnabled: false }}
                     />
                     <Stack.Screen name={ROUTE_LOGIN} component={LoginScreen} />

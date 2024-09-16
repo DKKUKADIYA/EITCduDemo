@@ -10,8 +10,8 @@ import {
     View,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCredentials } from '../../redux/loginSlice';
-import { changeLanguage } from '../../redux/languageSlice';
+import { setCredentials } from '../../redux/reducers/loginSlice';
+import { changeLanguage } from '../../redux/reducers/languageSlice';
 import { useTranslation } from 'react-i18next';
 import styles from './style';
 import { Dropdown } from 'react-native-element-dropdown';
@@ -19,19 +19,18 @@ import { LANGUAGE_KEYS, LanguageCodes, Languages } from '../../utils/constants';
 import { RootState } from '../../redux/store';
 import FastImage from 'react-native-fast-image';
 import { validateEmail, validatePassword } from '../../utils/validations';
-import { ROUTE_HOME, ROUTE_SPLASH } from '../../navigation/routes';
+import { ROUTE_HOME } from '../../navigation/routes';
 import { images } from '../../assets/images';
 import { Colors } from '../../utils/colors';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Restart from 'react-native-restart';
+import SensitiveStorage from '../../utils/SensitiveStorage';
 
-// Define the props for the component
-interface LoginScreenProps {
+type LoginScreenProps = {
     navigation: {
         [x: string]: any;
         replace: (screen: string) => void;
     };
-}
+};
 
 const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
     const { t, i18n } = useTranslation();
@@ -42,19 +41,16 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
     const [selectedValue, setSelectedValue] = useState<string>(selectedLanguage);
     const dispatch = useDispatch();
 
-    // Enable/Disable submit button based on validation
     useEffect(() => {
         setLoginBtnDisabled(!validateEmail(email) || !validatePassword(password) || !email || !password);
     }, [email, password]);
 
-    // Handle form submission
     const onLoginBtnClick = useCallback(() => {
         dispatch(setCredentials({ email, password }));
         navigation.replace(ROUTE_HOME);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [email, password]);
 
-    // Handle language change and navigation
     const handleLanguageChange = useCallback(async (lang: string) => {
         if (lang === selectedLanguage) {
             return;
@@ -62,21 +58,13 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
         setSelectedValue(lang);
         i18n.changeLanguage(lang);
         dispatch(changeLanguage(lang));
-        await AsyncStorage.setItem(LANGUAGE_KEYS, lang);
+        await SensitiveStorage.setItem(LANGUAGE_KEYS, lang);
 
-        // Apply RTL or LTR based on the selected language
         const isRTL = lang === LanguageCodes.ARABIC;
         I18nManager.forceRTL(isRTL);
         I18nManager.allowRTL(isRTL);
 
-        navigation.reset({
-            index: 0,
-            routes: [{ name: ROUTE_SPLASH }],
-        });
-
-        //After change language app restart for rtl to ltr and ltr to rtl convert
         Restart.Restart();
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [i18n, navigation]);
 
