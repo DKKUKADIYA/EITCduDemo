@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     },
     poster: {
         width: '100%',
-        height: verticalScale(170),
+        height: verticalScale(160),
         borderTopLeftRadius: 8,
         borderTopRightRadius: 8,
         borderBottomWidth: 2,
@@ -33,9 +33,10 @@ const styles = StyleSheet.create({
         marginTop: moderateScale(5),
         fontSize: 16,
         textAlign: 'center',
+        flex: 1,
+        textAlignVertical: 'center',
         color: Colors.primary,
         fontWeight: 'bold',
-        flex: 1,
         padding: moderateScale(5),
     },
     indicatorContainer: {
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
     toolbarTitle: {
         color: Colors.white,
         fontSize: 20,
+        fontWeight: '700',
     },
     paginationContainer: {
         flexDirection: 'row',

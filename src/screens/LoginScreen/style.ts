@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     },
     poster: {
         width: scale(110),
-        height: verticalScale(110),
+        height: verticalScale(100),
         backgroundColor: Colors.backgroundColor,
         alignSelf: 'center',
         marginTop: moderateScale(50),

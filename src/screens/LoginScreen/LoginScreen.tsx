@@ -122,7 +122,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                     style={loginBtnDisabled ? styles.submitBtnDisabled : styles.submitBtn}
                     onPress={onLoginBtnClick}
                 >
-                    <Text style={styles.submitText}>{t('login.login')}</Text>
+                    <Text style={styles.submitText}>{t('login.login').toUpperCase()}</Text>
                 </TouchableOpacity>
             </ScrollView>
         </SafeAreaView>

@@ -7,7 +7,6 @@ import {
     SafeAreaView,
     StatusBar,
     Alert,
-    TouchableOpacity,
     RefreshControl,
 } from 'react-native';
 import styles from './style';
@@ -19,8 +18,7 @@ import { CommonActions } from '@react-navigation/native';
 import { ROUTE_DESTINATION } from '../../navigation/routes';
 import Pagination from './components/Pagination';
 import MovieItem from './components/MovieItem';
-import FastImage from 'react-native-fast-image';
-import { images } from '../../assets/images';
+import CustomToolbar from './components/CustomToolbar';
 import { Colors } from '../../utils/colors';
 import { fetchPopularMovies } from '../../network/fetchHelper';
 
@@ -102,16 +100,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.toolbar}>
-                <Text style={styles.toolbarTitle}>{t('home.title')}</Text>
-                <TouchableOpacity onPress={handleLogout}>
-                    <FastImage
-                        source={images.logout}
-                        style={styles.logout}
-                        tintColor={Colors.white}
-                    />
-                </TouchableOpacity>
-            </View>
+            <CustomToolbar handleLogout={handleLogout} />
             <StatusBar barStyle="light-content" backgroundColor={Colors.primary} />
             <View style={styles.subContainer}>
                 {loading ? (

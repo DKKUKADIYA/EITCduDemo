@@ -22,8 +22,8 @@ export const fetchPopularMovies = async (selectedLanguage: string, page: number)
                 page: page,
             },
             headers: {
-                'Authorization': authToken,
-                'Accept': 'application/json',
+                Authorization: authToken,
+                Accept: 'application/json',
             },
             timeout: 10000,
         });
