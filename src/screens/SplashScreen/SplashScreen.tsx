@@ -12,8 +12,10 @@ const SplashScreen: React.FunctionComponent = () => {
     const { email, password } = useSelector((state: RootState) => state.login);
 
     useEffect(() => {
+        //If Email and Password are available then directly redirect to Home screen.
         const targetRoute = email && password ? ROUTE_HOME : ROUTE_LOGIN;
         const navigate = () => {
+            // It cleare stack and replace current stack with target stack
             navigation.dispatch(
                 CommonActions.reset({
                     index: 0,

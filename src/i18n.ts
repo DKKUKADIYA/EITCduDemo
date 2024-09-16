@@ -11,7 +11,7 @@ i18n
     .use(initReactI18next)
     .init({
         lng: 'en', // Default language
-        fallbackLng: 'en',
+        fallbackLng: 'en', //If the translation of Arabic language no available then display from English
         resources: {
             en: {
                 translation: en, // English translations

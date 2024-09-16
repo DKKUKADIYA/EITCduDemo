@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         paddingBottom: moderateScale(5),
     },
     poster: {
-        width: 150,
+        width: '100%',
         height: 190,
         borderTopLeftRadius: 8,
         borderTopRightRadius: 8,

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import MainNavigator from './src/navigation/MainNavigator';
 import './src/i18n';
-import { PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import store, { persistor } from './src/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -40,9 +39,7 @@ const App = () => {
     <SafeAreaProvider>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <PaperProvider>
-            <MainNavigator />
-          </PaperProvider>
+          <MainNavigator />
         </PersistGate>
       </Provider>
     </SafeAreaProvider>
