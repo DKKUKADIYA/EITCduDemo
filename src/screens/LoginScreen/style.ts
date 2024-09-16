@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         marginHorizontal: moderateScale(2),
     },
     dropdown: {
-        height: 45,
+        height: verticalScale(40),
         borderColor: Colors.primary,
         borderWidth: 1,
         paddingHorizontal: moderateScale(8),
